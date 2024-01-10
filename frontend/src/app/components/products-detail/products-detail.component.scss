@@ -1,0 +1,70 @@
+// Variabili scss
+$bg-color: #f0f0f0; // colore di sfondo
+$btn-color: #f0f0f0; // colore dei pulsanti
+$btn-size: 1.2rem; // dimensione dei pulsanti
+
+// Funzione scss per creare un gradiente
+@function gradient($color) {
+    @return linear-gradient(to right, darken($color, 10%), lighten($color, 10%));
+}
+
+// Stile del contenitore principale
+.container-fluid {
+    background-color: $bg-color;
+    padding-top: 130px;
+    color: black;
+    height: 90vh;
+}
+
+// Stile della griglia delle immagini
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+// Stile delle immagini piccole
+.thumbnail-small {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+// Stile dell'immagine grande
+.large-image {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+// Stile dei pulsanti
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn {
+    font-size: $btn-size;
+    /* background-image: gradient($btn-color); */
+    background-color: rgb(243, 130, 9);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+}
+
+// Animazione delle immagini piccole al click
+.thumbnail-small:active {
+    transform: scale(0.9);
+}

@@ -1,0 +1,108 @@
+<!-- <div
+  class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top">
+  <h5 class="my-0 mr-md-auto font-weight-normal">Laravel Angular JWT Auth</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" routerLink="/profile" *ngIf="isSignedIn">User Profile</a>
+    <a class="p-2 text-dark" *ngIf="!isSignedIn" routerLink="/login">Log in</a>
+    <a class="p-2 text-dark" routerLink="/register">Register</a>
+  </nav>
+  <button class="btn btn-outline-primary" (click)="signOut()" *ngIf="isSignedIn">Log out</button>
+</div> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#"><img src="../assets/corporate-short.svg" width="60" height="60" alt="Logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="products">Annunci</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login" *ngIf="!isSignedIn">Accedi</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="register" *ngIf="!isSignedIn">Registrati</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="logout" (click)="signOut()" *ngIf="isSignedIn">Esci</a>
+        </li>
+        <li class="nav-item">
+          <!-- <a class="btn btn-orange" href="insert-ad" role="button">Inserisci Annuncio</a> -->
+          <div class="container-fluid d-flex justify-content-center align-items-center" style="padding:0px;">
+            <ng-template #content let-c="close" let-d="dismiss">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Aggiungi nuovo annuncio</h4>
+                <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+              </div>
+              <div class="modal-body">
+                <form #productForm="ngForm" (ngSubmit)="addProduct(); c('Save click')">
+                  <div class="form-group">
+                    <label for="common_name" class="form-label">Nome:</label>
+                    <input type="text" id="common_name" [(ngModel)]="newProduct.common_name" name="common_name"
+                      class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="country" class="form-label">Luogo:</label>
+                    <input type="text" id="country" [(ngModel)]="newProduct.country" name="country"
+                      class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="description" class="form-label">Descrizione:</label>
+                    <textarea id="description" [(ngModel)]="newProduct.description" name="description"
+                      class="form-control" required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-orange">Salva</button>
+                </form>
+              </div>
+            </ng-template>
+
+            <button class="btn btn-lg btn-outline-danger" style="margin-left: 20px;" (click)="open(content)">Nuovo
+              annuncio</button>
+
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+<footer class="footer bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <h5>Chi siamo</h5>
+        <p>Siamo la digital company n.1 in in Italia per comprare e vendere. Siamo nati a Milano nel 2007 e oggi, ci
+          posizioniamo stabilmente tra i primi 10 brand online più visitati in Italia con 11 milioni di utenti ogni
+          mese.</p>
+      </div>
+      <div class="col-md-5">
+        <h5>Contatti</h5>
+        <ul class="list-unstyled">
+          <li><a href="#"><i class="fas fa-envelope"></i> info@subito.it</a></li>
+          <li><a href="#"><i class="fas fa-phone"></i> +39 012 345 6789</a></li>
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> Via delle Piante, 123 - 45678 -
+              Sicilia, Italia</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h5>Seguici</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="social-link">Facebook</a></li>
+          <li><a href="#" class="social-link">Twitter</a></li>
+          <li><a href="#" class="social-link">Instagram</a></li>
+          <li><a href="#" class="social-link">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <p class="text-muted">© 2023 Subito.it Tutti i diritti riservati.</p>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,34 @@
+<div class="container-fluid d-flex justify-content-center vh-100">
+    <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()" style="width: 300px;">
+        <h3 class="h3 mb-3 font-weight-normal text-center">Registrazione utente</h3>
+        <!-- Success -->
+        <div *ngIf="successMessage" class="alert alert-success mt-3">
+            {{ successMessage }}
+        </div>
+        <!-- Errors -->
+        <div *ngIf="errors?.name || errors?.email || errors?.password || errors?.password_confirmation"
+            class="alert alert-danger mt-3">
+            {{ errors?.name || errors?.email || errors?.password || errors?.password_confirmation }}
+        </div>
+        <!-- Signup form -->
+        <div class="form-group">
+            <label>Nome</label>
+            <input type="text" class="form-control" formControlName="name" />
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" formControlName="email" />
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" formControlName="password" />
+        </div>
+        <div class="form-group">
+            <label>Conferma Password</label>
+            <input type="password" class="form-control" formControlName="password_confirmation" />
+        </div>
+        <button type="submit" class="btn btn-block btn-orange mt-3">
+            Registrati
+        </button>
+    </form>
+</div>

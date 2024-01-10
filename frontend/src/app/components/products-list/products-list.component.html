@@ -1,0 +1,59 @@
+<div class="container-fluid">
+
+    <div class="row justify-content-center g-0">
+        <form class="col-md-6 m-5" role="search">
+            <div class="row">
+                <label class="col" for="search1">Cosa cerchi?</label>
+                <label class="col" for="search2">In quale categoria?</label>
+                <label class="col" for="search3">Dove?</label>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input id="search1" class="form-control" type="search" placeholder="Vespa, iPhone, Bilocale"
+                        aria-label="Search" [(ngModel)]="searchTerm1" (input)="filterProducts()" name="search" />
+                </div>
+                <div class="col">
+                    <input id="search2" class="form-control" type="search" placeholder="Tutte le categorie"
+                        aria-label="Search" [(ngModel)]="searchTerm2" (input)="filterProducts()" name="search" />
+                </div>
+                <div class="col">
+                    <input id="search3" class="form-control" type="search" placeholder="Comune, Provincia o Regione"
+                        aria-label="Search" [(ngModel)]="searchTerm3" (input)="filterProducts()" name="search" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="row justify-content-center g-0">
+        <div class="col-lg-3 mb-4" *ngFor="let product of displayedProducts">
+            <a [routerLink]="['/products', product.id]" class="card-link"
+                style="text-decoration: none; max-width: 300px;">
+                <div class="card">
+                    <img [src]="product.product_images[0]?.url_image ?? 'https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png'"
+                        class="card-img-top" alt="{{product.common_name}}" style="max-width: 100%;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.common_name }}</h5>
+                        <!-- <div class="card-text">
+                            {{ product.description.length > 40 ? (product.description | slice:0:40) + '...' :
+                            product.description }}
+                        </div> -->
+                        <p class="chip">{{ product.country }}</p>
+                        <!-- <p class="chip">{{ product.origin_country.name }}</p> -->
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center" style="margin:0px;">
+                <li class="page-item"><a class="page-link" (click)="previousPage()"
+                        style="cursor: pointer;">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" (click)="nextPage()" style="cursor: pointer;">Next</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
